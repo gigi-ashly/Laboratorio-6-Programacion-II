@@ -89,7 +89,9 @@ public class Consola {
             if ("Dir".equals(comando)) {
                 exigirCantidad(args, 0);
                 File[] elementos = carpetaActual.listFiles();
-                if (elementos == null || elementos.length == 0) return "La carpeta está vacía.";
+                if (elementos == null || elementos.length == 0){ 
+                    return "La carpeta está vacía.";
+                }
                 StringBuilder salida = new StringBuilder();
                 for (int i = 0; i < elementos.length; i++) {
                     salida.append(elementos[i].isDirectory() ? "<DIR>  " : "       ");
@@ -158,11 +160,7 @@ public class Consola {
             }
             if ("Help".equals(comando)) {
                 exigirCantidad(args, 0);
-                return "Mkdir <nombre>   Crea una carpeta\n"
-                     + "Mfile <nombre.ext> Crea un archivo\n"
-                     + "Rm <nombre>       Elimina un archivo o carpeta\n"
-                     + "Cd <carpeta>      Entra a una carpeta\n"
-                     + "..                Regresa a la carpeta anterior\n"
+                return "Mkdir <nombre>   Crea una carpeta\n" + "Mfile <nombre.ext> Crea un archivo\n" + "Rm <nombre>       Elimina un archivo o carpeta\n" + "Cd <carpeta>      Entra a una carpeta\n" + "..                Regresa a la carpeta anterior\n"
                      + "Dir               Lista el contenido\n"
                      + "Date / Time       Muestra fecha u hora\n"
                      + "Wr <archivo>      Escribe y reemplaza contenido\n"
@@ -235,7 +233,7 @@ public class Consola {
         } finally {
             lector.close();
         }
-        return contenido.length() == 0 ? "El archivo está vacío." : contenido.toString();
+        return contenido.length() == 0 ? "El archivo está vacío" : contenido.toString();
     }
 
     private String copiar(File origen, File destino) throws IOException {
